@@ -122,72 +122,39 @@ This module contains four methods (for now): insert, delete, getByKey, updateDat
     setValueCallback Type: Function 'The function to be called to return the retrieved object to'
   
   updateDataByKey: databaseObject, objectStoreObject, indecesObject, updatedObject
+    
+      Updates an existing object in the database
   
-  Deletes a row from the database by its key value
-  
-    databaseObject Type: Object
-    
-      DbName: Type: String 'The name of the database',
+      databaseObject Type: Object
       
-      DbVersion: Type: Number 'The current version of the database',
+        DbName: Type: String 'The name of the database',
+        
+        DbVersion: Type: Number 'The current version of the database',
+        
+        Db: {} Type: Empty Object 'This is used internally by the project to hold a created database instance'.
+        
+        databaseObject is a value template provided under the DatabaseObject value and is meant to be modified in the controller
+          before makeing a call
       
-      Db: {} Type: Empty Object 'This is used internally by the project to hold a created database instance'.
+      objectStoreObject Type: Object
       
-      databaseObject is a value template provided under the DatabaseObject value and is meant to be modified in the controller
-        before makeing a call
-    
-    objectStoreObject Type: Object
-    
-      name: Type: String 'The name of the database',
+        name: Type: String 'The name of the database',
+        
+        keyPath: Type: String 'If you wish to provide the column name for the primary key this is where you enter it'
+        
+        autoIncrement: Type: Boolean 'Defaults to false, if set to true the primary key value will be an auto-incrementing int.'
       
-      keyPath: Type: String 'If you wish to provide the column name for the primary key this is where you enter it'
+        createdObjectStore: is a value template provided under the ObjectStore value and is meant to be modified in the controller before makeing a call
+        
+      indecesObject Type: Array An array of the desired indeces
       
-      autoIncrement: Type: Boolean 'Defaults to false, if set to true the primary key value will be an auto-incrementing int.'
-    
-      createdObjectStore: is a value template provided under the ObjectStore value and is meant to be modified in the controller before makeing a call
+      {
+        name: Type: String 'Name of the index,
+        params: {
+          unique: Type: Boolean 'Is the index value required to be unique? If so true, else false'
+          }
+      }
       
-    indecesObject Type: Array An array of the desired indeces
+      updatedObject Type: String, Number, Object 'The object with the updated values to be put into the database'
     
-    {
-      name: Type: String 'Name of the index,
-      params: {
-        unique: Type: Boolean 'Is the index value required to be unique? If so true, else false'
-        }
-    }
-    
-    keyToDelete Type: Number or String 'The key value of the row to be deleted'
-    
-  getByKey: databaseObject, objectStoreObject, indecesObject, keyValue, setValueCallback
-  
-    Gets a row from the database by its key value
-  
-    databaseObject Type: Object
-    
-      DbName: Type: String 'The name of the database',
-      
-      DbVersion: Type: Number 'The current version of the database',
-      
-      Db: {} Type: Empty Object 'This is used internally by the project to hold a created database instance'.
-      
-      databaseObject is a value template provided under the DatabaseObject value and is meant to be modified in the controller
-        before makeing a call
-    
-    objectStoreObject Type: Object
-    
-      name: Type: String 'The name of the database',
-      
-      keyPath: Type: String 'If you wish to provide the column name for the primary key this is where you enter it'
-      
-      autoIncrement: Type: Boolean 'Defaults to false, if set to true the primary key value will be an auto-incrementing int.'
-    
-      createdObjectStore: is a value template provided under the ObjectStore value and is meant to be modified in the controller before makeing a call
-      
-    indecesObject Type: Array An array of the desired indeces
-    
-    {
-      name: Type: String 'Name of the index,
-      params: {
-        unique: Type: Boolean 'Is the index value required to be unique? If so true, else false'
-        }
-    }
     
