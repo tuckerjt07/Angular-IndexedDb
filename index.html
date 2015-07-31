@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="src/app.js"></script>
+        <script src="src/ConnectionFactory.js"></script>
+        <script src="src/DatabaseObject.js"></script>
+        <script src="src/IndecesObject.js"></script>
+        <script src="src/ObjectStoreObject.js"></script>
+        <script src="src/TestController.js"></script>
+        <script src="src/TransactionFactory.js"></script>
+    </head>
+    <body ng-app="IndexedDb.Utils">
+        <div ng-controller="TestController as test"
+             ng-init="test.updateByKey()">
+            Testing the insertion of data.
+        </div>
+    </body>
+</html>
