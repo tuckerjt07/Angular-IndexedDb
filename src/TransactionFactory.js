@@ -12,18 +12,19 @@
                 return {
                     //itemsToAdd is an array of any type
                     insert: function (databaseObject, objectStoreObject, indecesObject, itemsToAdd) {
-                        var callback;
+                        var callback, store;
                         callback = function (databaseObject, objectStore) {
                             var item, transaction;
                             for (item in itemsToAdd) {
-                                transaction = databaseObject.Db.transaction([objectStore.name], 'readwrite');
-                                //transaction = setTransaction(databaseObject.Db.transaction, objectStore.name, 'readwrite');
                                 if (itemsToAdd.hasOwnProperty(item)) {
-                                    if (objectStore.createdObjectStore !== null) {
-                                        objectStore.createdObjectStore.add(itemsToAdd[item]);
-                                    } else {
-                                        var store = transaction.objectStore(objectStore.name);
-                                        store.add(itemsToAdd[item]);
+                                    transaction = databaseObject.Db.transaction([objectStore.name], 'readwrite');
+                                    if (itemsToAdd.hasOwnProperty(item)) {
+                                        if (objectStore.createdObjectStore !== null) {
+                                            transaction.add(itemsToAdd[item]);
+                                        } else {
+                                            store = transaction.objectStore(objectStore.name);
+                                            store.add(itemsToAdd[item]);
+                                        }
                                     }
                                 }
                             }
