@@ -27,9 +27,11 @@
                                                                            {unique: indeces[index].unique});
                             }
                         }
-                        if (callback) {
-                            callback(databaseObject, objectStore);
-                        }
+                        objectStore.createdObjectStore.oncomplete = function (event) {
+                            if (callback) {
+                                callback(databaseObject, objectStore);
+                            }
+                        };
                     };
                 };
                 return {
