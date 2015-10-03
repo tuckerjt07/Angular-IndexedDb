@@ -58,9 +58,33 @@
                                 .index(indexName)
                                 .get(indexValue).onsuccess =
                                 function (event) {
-                                if (getByIndexCallback !== undefined) {
-                                    getByIndexCallback(event.target.result);
-                                }
+                                    if (getByIndexCallback !== undefined) {
+                                        getByIndexCallback(event.target.result);
+                                    }
+                            };
+                        };
+                        ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
+                    },
+                    getByValue: function (databaseObject, objectStoreObject, indecesObject, value, columnName, getByValueCallback) {
+                        var callback, results;
+                        results = [];
+                        callback = function (databaseObject, objectStore) {
+                            databaseObject.Db.transaction([objectStore.name])
+                                .objectStore(objectStore.name)
+                                .openCursor().onsuccess = function (event) {
+                                    var cursor = event.target.result;
+                                    if (cursor) {
+                                        if (cursor.value[columnName].tostring().indexOf(value) > -1) {
+                                            results.push(cursor.value);
+                                            cursor.continue();
+                                        } else {
+                                            cursor.continue();
+                                        }
+                                    } else {
+                                        if (getByValueCallback !== undefined) {
+                                            getByValueCallback(results);
+                                        }
+                                    }
                             };
                         };
                         ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
@@ -123,6 +147,34 @@
                         };
                         ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
                     },
+                    freeTextSearch: function (databaseObject, objectStoreObject, indecesObject, value, freeTextSearchCallback) {
+                        var callback, results;
+                        results = [];
+                        callback = function (databaseObject, objectStore) {
+                            databaseObject.Db.transaction([objectStore.name])
+                                .objectStore(objectStore.name)
+                                .openCursor().onsuccess = function (event) {
+                                    var cursor = event.target.result;
+                                    if (cursor) {
+                                        var property;
+                                        for (property in cursor.value) {
+                                            if (cursor.value.hasOwnProperty(property)) {
+                                                if (cursor.value[property].toString().indexOf(value) > -1) {
+                                                    results.push(cursor.value);
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        cursor.continue();
+                                    } else {
+                                        if (freeTextSearchCallback !== undefined) {
+                                            freeTextSearchCallback(results);
+                                        }
+                                    }
+                            };
+                        };
+                        ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
+                    },
                     getKeyPath: function (databaseObject, objectStoreObject, indecesObject, getKeyPathCallback) {
                         var callback;
                         callback = function (databaseObject, objectStore) {
@@ -140,7 +192,7 @@
                             var indeceNames;
                             indeceNames = [];
                             indeceNames = databaseObject.Db.transaction([objectStore.name])
-                            .objectStore(objectStore.name).indexNames;
+                                .objectStore(objectStore.name).indexNames;
                             if (getIndeceNamesCallback !== undefined) {
                                 getIndeceNamesCallback(indeceNames);
                             }

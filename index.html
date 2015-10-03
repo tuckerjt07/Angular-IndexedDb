@@ -51,6 +51,35 @@
                 TestId: {{main.singleIndexRecord.TestId}} Column1: {{main.singleIndexRecord.Column1}} Column2: {{main.singleIndexRecord.Column2}}
             </span>
         </div>
+        <h1>Select Known Column by Value</h1>
+        <p>Less performant than By Index or Key. Works if you know the column name you are searching</p>
+        <hr />
+        <form ng-submit="main.getByValue(main.value, main.columnName)" name="getByValueForm">
+            <input type="text" ng-model="main.value" placeholder="Enter Value to Search For" />
+            <select ng-options="column.Text for column in main.columnNames" ng-model="main.columnName">
+                <option value="">-- Select Column Name</option>
+            </select>
+            <button type="submit">Search Value</button>
+        </form>
+        <div ng-show="main.valueForColumnRecoreds !== null">
+            <h2>Result(s)</h2>
+            <div ng-repeat="returnedRecord in main.valueForColumnRecords">
+                TestId: {{returnedRecord.TestId}} Column1: {{returnedRecord.Column1}} Column2: {{returnedRecord.Column2}}
+            </div>
+        </div>
+        <h1>Free Text Search</h1>
+        <p>Least performant query. Will return fields based on pattern matching of all column values</p>
+        <hr />
+        <form ng-submit="main.freeTextSearch(main.freeText)" name="freeTextSearchForm">
+            <input type="text" ng-model="main.freeText" placeholder="Search String" />
+            <button type="submit">Search</button>
+        </form>
+        <div ng-show="main.valueForFreeText !== null">
+            <h2>Result(s)</h2>
+            <div ng-repeat="returnedRecord in main.valueForFreeText">
+                TestId: {{returnedRecord.TestId}} Column1: {{returnedRecord.Column1}} Column2: {{returnedRecord.Column2}}
+            </div>
+        </div>
         <h1>Select Record(s) by Position</h1>
         <p>Useful for paging or when a start and stop number of records can be provided</p>
         <hr />
