@@ -5,10 +5,6 @@
     angular.module('TransactionFactory.factory', [])
         .factory('TransactionFactory', ['ConnectionManager',
             function (ConnectionManager) {
-                //                var setTransaction;
-                //                setTransaction = function (databaseObjectTransaction, objectStoreName, transactionType) {
-                //                    return databaseObjectTransaction([objectStoreName], transactionType);
-                //                }
                 return {
                     //itemsToAdd is an array of any type
                     insert: function (databaseObject, objectStoreObject, indecesObject, itemsToAdd) {
@@ -80,6 +76,43 @@
                                     }
                                 }
                             };
+                        };
+                        ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
+                    },
+                    selectByPosition: function (databaseObject, objectStoreObject, indecesObject, start, stop, getByPositionCallback) {
+                        var callback, cursorPosition, results;
+                        cursorPosition = 0;
+                        results = [];
+                        callback = function (databaseObject, objectStore) {
+                            databaseObject.Db.transaction([objectStore.name])
+                                .objectStore(objectStore.name)
+                                .openCursor().onsuccess = function (event) {
+                                var cursor = event.target.result;
+                                if (cursor) {
+                                    if (cursorPosition < start) {
+                                        cursor.advance(start);
+                                    } else if (cursorPosition >= start && cursorPosition <= stop) {
+                                        results.push(cursor.value);
+                                        cursorPosition++;
+                                        cursor.continue();
+                                    } else {
+                                        if (getByPositionCallback !== undefined) {
+                                            getByPositionCallback(results);
+                                        }
+                                    }
+                                }
+                            };
+                        };
+                        ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
+                    },
+                    getKeyPath: function (databaseObject, objectStoreObject, indecesObject, getKeyPathCallback) {
+                        var callback;
+                        callback = function (databaseObject, objectStore) {
+                            var keyPath = databaseObject.Db.transaction([objectStore.name])
+                            .objectStore(objectStore.name).keyPath;
+                            if (getKeyPathCallback !== undefined) {
+                                getKeyPathCallback(keyPath);
+                            }
                         };
                         ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
                     }

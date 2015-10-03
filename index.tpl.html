@@ -7,9 +7,6 @@
     <div ng-controller="MainCtrl as main">
         <button type="button" ng-click="main.insertData()">Insert Initial Data</button>
         <button type="button" ng-click="main.selectAll()">Get All Data</button>
-        <button type="button" ng-click="main.deleteRow()">Delete Row</button>
-        <button type="button" ng-click="main.getByKey()">Get Single Row</button>
-        <button type="button" ng-click="main.updateByKey()">Update Single Row</button>
         <hr />
         <h1>Insert/Update</h1>
         <hr />
@@ -25,6 +22,16 @@
             <input type="tel" ng-model="main.rowToDelete" placeholder="Row Id to Delete" />
             <button type="submit">Delete Row</button>
         </form>
+        <h1>Select Row by Key</h1>
+        <hr />
+        <form ng-submit="main.getByKey(main.keyValue)" name="getByKeyForm">
+            <input type="text" ng-model="main.keyValue" placeholder="Key Value to Search For" />
+            <button type="submit">Search Value</button>
+        </form>
+        <div ng-show="main.singleRecord !== null">
+            <h2>Result</h2>
+            <span>Id: {{main.singleRecord.TestId}} Title: {{main.singleRecord.Column1}} Description: {{main.singleRecord.Column2}}</span>
+        </div>
         <h1>Results</h1>
         <hr />
         <p>Number of Results: {{main.results.length}}</p>
