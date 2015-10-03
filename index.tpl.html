@@ -9,20 +9,23 @@
         <button type="button" ng-click="main.selectAll()">Get All Data</button>
         <hr />
         <h1>Insert/Update</h1>
+        <p>Useful for adding or updating records in the database</p>
         <hr />
         <form ng-submit="main.updateByKey(main.data)" name="insertUpdateForm">
             <input type="tel" ng-model="main.data.TestId" placeholder="Enter Id" />
             <input type="text" ng-model="main.data.Column1" placeholder="Enter Column1" />
-            <input type="text" ng-model="main.data.Column2" placeholder="Enter Description" />
+            <input type="text" ng-model="main.data.Column2" placeholder="Enter Column2" />
             <button type="submit">Update/Add Row</button>
         </form>
         <h1>Delete</h1>
+        <p>Used to delete a specific record</p>
         <hr />
         <form ng-submit="main.deleteRow(main.rowToDelete)" name="deleteForm">
             <input type="tel" ng-model="main.rowToDelete" placeholder="Row Id to Delete" />
             <button type="submit">Delete Row</button>
         </form>
         <h1>Select Row by Key</h1>
+        <p>Useful for finding a record when its key is known</p>
         <hr />
         <form ng-submit="main.getByKey(main.keyValue)" name="getByKeyForm">
             <input type="text" ng-model="main.keyValue" placeholder="Key Value to Search For" />
@@ -30,9 +33,10 @@
         </form>
         <div ng-show="main.singleRecord !== null">
             <h2>Result</h2>
-            <span>TestId: {{main.singleRecord.TestId}} Column1: {{main.singleRecord.Column1}} Description: {{main.singleRecord.Column2}}</span>
+            <span>TestId: {{main.singleRecord.TestId}} Column1: {{main.singleRecord.Column1}} Column2: {{main.singleRecord.Column2}}</span>
         </div>
         <h1>Select Row by Index</h1>
+        <p>Usefule for finding a record when its index's value and name are both known</p>
         <hr />
         <form ng-submit="main.getByIndex(main.indexValue, main.indexName)" name="getByKeyForm">
             <input type="text" ng-model="main.indexValue" placeholder="Index Value to Search For" />
@@ -44,14 +48,28 @@
         <div ng-show="main.singleIndexRecord !== null">
             <h2>Result</h2>
             <span>
-                TestId: {{main.singleIndexRecord.TestId}} Column1: {{main.singleIndexRecord.Column1}} Description: {{main.singleIndexRecord.Column2}}
+                TestId: {{main.singleIndexRecord.TestId}} Column1: {{main.singleIndexRecord.Column1}} Column2: {{main.singleIndexRecord.Column2}}
             </span>
+        </div>
+        <h1>Select Record(s) by Position</h1>
+        <p>Useful for paging or when a start and stop number of records can be provided</p>
+        <hr />
+        <form ng-submit="main.getByPosition(main.start, main.stop)" name="getByPositionForm">
+            <input type="tel" ng-model="main.start" placeholder="Enter Start Number" />
+            <input type="tel" ng-model="main.stop" placeholder="Enter Stop Number" />
+            <button type="submit">Get Records</button>
+        </form>
+        <div ng-show="main.recordsByPosition !== null">
+            <h2>Result</h2>
+            <div ng-repeat="record in main.recordsByPosition">
+                TestId: {{record.TestId}} Column1: {{record.Column1}} Column2: {{record.Column2}}
+            </div>
         </div>
         <h1>Results</h1>
         <hr />
         <p>Number of Results: {{main.results.length}}</p>
         <div ng-repeat="result in main.results">
-            <span>TestId: {{result.TestId}} Column1: {{result.Column1}} Description: {{result.Column2}}</span>
+            <span>TestId: {{result.TestId}} Column1: {{result.Column1}} Column2: {{result.Column2}}</span>
         </div>
     </div>
     <!-- bower:js -->

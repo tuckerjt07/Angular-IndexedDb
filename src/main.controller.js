@@ -11,6 +11,7 @@
             self.indeceNames = [];
             self.singleRecord = null;
             self.singleIndexRecord = null;
+            self.recordsByPosition = null;
             DatabaseObject.DbName = 'TestDb';
             DatabaseObject.DbVersion = 1;
             ObjectStore.name = 'TestObject';
@@ -105,6 +106,15 @@
                     self.singleIndexRecord = data !== undefined ? data: null;
                     transactionComplete();
                 };
+            };
+            self.getByPosition = function (start, stop) {
+                var callback;
+                self.recordsByPosition = null;
+                callback = function (data) {
+                    self.recordsByPosition = data;
+                    $scope.$apply();
+                };
+                TransactionFactory.selectByPosition(myDatabaseObject, myObjectStoreObject, myIndecesObject, parseInt(start, 10), parseInt(stop, 10), callback);
             };
             self.updateByKey = function (rowToUpdate) {
                 var callback, dataType;

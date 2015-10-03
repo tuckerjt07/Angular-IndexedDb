@@ -105,15 +105,18 @@
                                     var cursor = event.target.result;
                                     if (cursor) {
                                         if (cursorPosition < start) {
+                                            cursorPosition++;
                                             cursor.advance(start);
                                         } else if (cursorPosition >= start && cursorPosition <= stop) {
                                             results.push(cursor.value);
                                             cursorPosition++;
                                             cursor.continue();
                                         } else {
-                                            if (getByPositionCallback !== undefined) {
-                                                getByPositionCallback(results);
-                                            }
+                                            cursor.continue();
+                                        }
+                                    } else {
+                                        if (getByPositionCallback !== undefined) {
+                                            getByPositionCallback(results);
                                         }
                                     }
                             };
