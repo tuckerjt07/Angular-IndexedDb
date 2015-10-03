@@ -62,6 +62,26 @@
                                 .put(updatedObject);
                         };
                         ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
+                    },
+                    selectAll: function (databaseObject, objectStoreObject, indecesObject, getAllCallback) {
+                        var callback, results;
+                        results = [];
+                        callback = function (databaseObject, objectStore) {
+                            databaseObject.Db.transaction([objectStore.name])
+                            .objectStore(objectStore.name)
+                            .openCursor().onsuccess = function (event) {
+                                var cursor = event.target.result;
+                                if (cursor) {
+                                    results.push(cursor.value);
+                                    cursor.continue();
+                                } else {
+                                    if (getAllCallback !== undefined) {
+                                        getAllCallback(results);
+                                    }
+                                }
+                            };
+                        };
+                        ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
                     }
                 };
         }]);

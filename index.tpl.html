@@ -1,0 +1,41 @@
+<html>
+
+<head>
+</head>
+
+<body ng-app="IndexedDb.Utils">
+    <div ng-controller="MainCtrl as main">
+        <button type="button" ng-click="main.insertData()">Insert Initial Data</button>
+        <button type="button" ng-click="main.selectAll()">Get All Data</button>
+        <button type="button" ng-click="main.deleteRow()">Delete Row</button>
+        <button type="button" ng-click="main.getByKey()">Get Single Row</button>
+        <button type="button" ng-click="main.updateByKey()">Update Single Row</button>
+        <hr />
+        <h1>Insert/Update</h1>
+        <hr />
+        <form ng-submit="main.updateByKey(main.data)" name="insertUpdateForm">
+            <input type="tel" ng-model="main.data.TestId" placeholder="Enter Id" />
+            <input type="text" ng-model="main.data.Column1" placeholder="Enter Title" />
+            <input type="text" ng-model="main.data.Column2" placeholder="Enter Description" />
+            <button type="submit">Update/Add Row</button>
+        </form>
+        <h1>Delete</h1>
+        <hr />
+        <form ng-submit="main.deleteRow(main.rowToDelete)" name="deleteForm">
+            <input type="tel" ng-model="main.rowToDelete" placeholder="Row Id to Delete" />
+            <button type="submit">Delete Row</button>
+        </form>
+        <h1>Results</h1>
+        <hr />
+        <p>Number of Results: {{main.results.length}}</p>
+        <div ng-repeat="result in main.results">
+            <span>Id: {{result.TestId}} Title: {{result.Column1}} Description: {{result.Column2}}</span>
+        </div>
+    </div>
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- include: "type": "js", "files": "src/**/*.js" -->
+    <!-- /include -->
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+{
+  "name": "angular-indexed-db",
+  "version": "1.0.1",
+  "description": "A comprehensive API of AngularJS factories for interacting with the IndexedDbin browser database",
+  "main": "release.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuckerjt07/Angular-IndexedDb.git"
+  },
+  "keywords": [
+    "IndexedDb",
+    "AngularJS",
+    "CRUD",
+    "Offline",
+    "Storage",
+    "Database",
+    "Offline",
+    "Database",
+    "In Browser Database",
+    "angular-indexed",
+    "angular-indexeddb",
+    "angular-indexed-db"
+  ],
+  "author": "Jacob Tucker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tuckerjt07/Angular-IndexedDb/issues"
+  },
+  "homepage": "https://github.com/tuckerjt07/Angular-IndexedDb",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-include-source": "^0.7.0",
+    "grunt-wiredep": "^2.0.0",
+    "karma": "^0.13.3",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-jasmine": "^0.3.6",
+    "karma-opera-launcher": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-safari-launcher": "^0.1.1",
+    "phantomjs": "^1.9.17"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "karma": "^0.13.3",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-jasmine": "^0.3.6",
+    "karma-opera-launcher": "^0.2.0",
+    "karma-safari-launcher": "^0.1.1",
+    "phantomjs": "^1.9.17",
+    "karma-phantomjs-launcher": "^0.2.0"
+  }
+}

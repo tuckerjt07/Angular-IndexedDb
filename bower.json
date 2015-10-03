@@ -1,0 +1,29 @@
+{
+  "name": "angular-indexeddb",
+  "version": "1.0.0",
+  "homepage": "https://github.com/tuckerjt07/Angular-IndexedDb",
+  "authors": [
+    "tuckerjt07 <tuckerjt07@gmail.com>"
+  ],
+  "description": "A comprehensive API for interacting with the IndexedDb in browser database through AngularJS factories",
+  "main": "release.js",
+  "keywords": [
+    "AngularJS",
+    "IndexedDb",
+    "angular-indexeddb",
+    "\"In",
+    "browser",
+    "database"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7"
+  }
+}
