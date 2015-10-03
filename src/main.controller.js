@@ -4,11 +4,13 @@
     angular.module('TestController.Controller', [])
         .controller('MainCtrl', ['$scope', 'TransactionFactory', 'DatabaseObject', 'ObjectStore', 'IndecesObject', 'HelperFactory',
                                  function ($scope, TransactionFactory, DatabaseObject, ObjectStore, IndecesObject, HelperFactory) {
-            var self, myDatabaseObject, myObjectStoreObject, myIndecesObject, itemsToAdd, i, transactionComplete, getKeyPath;
+            var self, myDatabaseObject, myObjectStoreObject, myIndecesObject, itemsToAdd, i, transactionComplete, getKeyPath, getIndeceNames;
             self = this;
             self.results = [];
             self.data = {};
+            self.indeceNames = [];
             self.singleRecord = null;
+            self.singleIndexRecord = null;
             DatabaseObject.DbName = 'TestDb';
             DatabaseObject.DbVersion = 1;
             ObjectStore.name = 'TestObject';
@@ -38,6 +40,15 @@
                     }
                 };
                 TransactionFactory.getKeyPath(myDatabaseObject, myObjectStoreObject, myIndecesObject, callback);
+            };
+            getIndeceNames = function (getIndeceNamesCallback) {
+                var callback;
+                callback = function (indeceNames) {
+                    if (getIndeceNamesCallback !== undefined) {
+                        getIndeceNamesCallback(indeceNames);
+                    }
+                };
+                TransactionFactory.getIndeceNames(myDatabaseObject, myObjectStoreObject, myIndecesObject, callback);
             };
             self.insertData = function () {
                 TransactionFactory.insert(myDatabaseObject, myObjectStoreObject, myIndecesObject, itemsToAdd);
@@ -79,6 +90,22 @@
                     transactionComplete();
                 };
             };
+            self.getByIndex = function (indexValue, indexName) {
+                var callback, firstRecordCallback, dataType;
+                self.singleIndexRecord = null;
+                firstRecordCallback = function (data) {
+                    if (indexValue !== null && indexValue !== undefined && indexName !== null && indexName !== undefined) {
+                        dataType = HelperFactory.getFieldType(data[0][indexName.Text]);
+                        indexValue = dataType === 'number' ? parseInt(indexValue, 10) : indexValue;
+                    }
+                    TransactionFactory.getByIndex(myDatabaseObject, myObjectStoreObject, myIndecesObject, indexValue, indexName.Text, callback);
+                };
+                TransactionFactory.selectByPosition(myDatabaseObject, myObjectStoreObject, myIndecesObject, 0, 0, firstRecordCallback);
+                callback = function (data) {
+                    self.singleIndexRecord = data !== undefined ? data: null;
+                    transactionComplete();
+                };
+            };
             self.updateByKey = function (rowToUpdate) {
                 var callback, dataType;
                 callback = function (keyPathName) {
@@ -103,5 +130,22 @@
                 };
                 TransactionFactory.selectAll(myDatabaseObject, myObjectStoreObject, myIndecesObject, callback);
             };
+            self.getIndeceNames = function () {
+                var callback;
+                callback = function (data) {
+                    var item;
+                    for (item in data) {
+                        if (data.hasOwnProperty(item)) {
+                            self.indeceNames.push({
+                                Id: item,
+                                Text: data[item]
+                            });
+                        }
+                    }
+                    $scope.$apply();
+                };
+                getIndeceNames(callback);
+            };
+            self.getIndeceNames();
     }]);
 }());

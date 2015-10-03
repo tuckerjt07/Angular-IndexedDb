@@ -31,8 +31,8 @@
                         var callback;
                         callback = function (databaseObject, objectStore) {
                             databaseObject.Db.transaction([objectStore.name], 'readwrite')
-                            .objectStore(objectStore.name)
-                            .delete(keyToDelete);
+                                .objectStore(objectStore.name)
+                                .delete(keyToDelete);
                         };
                         ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
                     },
@@ -46,6 +46,21 @@
                                     if (setValueCallback) {
                                         setValueCallback(event.target.result);
                                     }
+                            };
+                        };
+                        ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
+                    },
+                    getByIndex: function (databaseObject, objectStoreObject, indecesObject, indexValue, indexName, getByIndexCallback) {
+                        var callback;
+                        callback = function (databaseObject, objectStore) {
+                            databaseObject.Db.transaction([objectStore.name])
+                                .objectStore(objectStore.name)
+                                .index(indexName)
+                                .get(indexValue).onsuccess =
+                                function (event) {
+                                if (getByIndexCallback !== undefined) {
+                                    getByIndexCallback(event.target.result);
+                                }
                             };
                         };
                         ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
@@ -64,17 +79,17 @@
                         results = [];
                         callback = function (databaseObject, objectStore) {
                             databaseObject.Db.transaction([objectStore.name])
-                            .objectStore(objectStore.name)
-                            .openCursor().onsuccess = function (event) {
-                                var cursor = event.target.result;
-                                if (cursor) {
-                                    results.push(cursor.value);
-                                    cursor.continue();
-                                } else {
-                                    if (getAllCallback !== undefined) {
-                                        getAllCallback(results);
+                                .objectStore(objectStore.name)
+                                .openCursor().onsuccess = function (event) {
+                                    var cursor = event.target.result;
+                                    if (cursor) {
+                                        results.push(cursor.value);
+                                        cursor.continue();
+                                    } else {
+                                        if (getAllCallback !== undefined) {
+                                            getAllCallback(results);
+                                        }
                                     }
-                                }
                             };
                         };
                         ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
@@ -87,20 +102,20 @@
                             databaseObject.Db.transaction([objectStore.name])
                                 .objectStore(objectStore.name)
                                 .openCursor().onsuccess = function (event) {
-                                var cursor = event.target.result;
-                                if (cursor) {
-                                    if (cursorPosition < start) {
-                                        cursor.advance(start);
-                                    } else if (cursorPosition >= start && cursorPosition <= stop) {
-                                        results.push(cursor.value);
-                                        cursorPosition++;
-                                        cursor.continue();
-                                    } else {
-                                        if (getByPositionCallback !== undefined) {
-                                            getByPositionCallback(results);
+                                    var cursor = event.target.result;
+                                    if (cursor) {
+                                        if (cursorPosition < start) {
+                                            cursor.advance(start);
+                                        } else if (cursorPosition >= start && cursorPosition <= stop) {
+                                            results.push(cursor.value);
+                                            cursorPosition++;
+                                            cursor.continue();
+                                        } else {
+                                            if (getByPositionCallback !== undefined) {
+                                                getByPositionCallback(results);
+                                            }
                                         }
                                     }
-                                }
                             };
                         };
                         ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
@@ -109,9 +124,22 @@
                         var callback;
                         callback = function (databaseObject, objectStore) {
                             var keyPath = databaseObject.Db.transaction([objectStore.name])
-                            .objectStore(objectStore.name).keyPath;
+                                .objectStore(objectStore.name).keyPath;
                             if (getKeyPathCallback !== undefined) {
                                 getKeyPathCallback(keyPath);
+                            }
+                        };
+                        ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);
+                    },
+                    getIndeceNames: function (databaseObject, objectStoreObject, indecesObject, getIndeceNamesCallback) {
+                        var callback;
+                        callback = function (databaseObject, objectStore) {
+                            var indeceNames;
+                            indeceNames = [];
+                            indeceNames = databaseObject.Db.transaction([objectStore.name])
+                            .objectStore(objectStore.name).indexNames;
+                            if (getIndeceNamesCallback !== undefined) {
+                                getIndeceNamesCallback(indeceNames);
                             }
                         };
                         ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject, callback);

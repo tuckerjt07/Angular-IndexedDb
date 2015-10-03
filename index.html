@@ -12,7 +12,7 @@
         <hr />
         <form ng-submit="main.updateByKey(main.data)" name="insertUpdateForm">
             <input type="tel" ng-model="main.data.TestId" placeholder="Enter Id" />
-            <input type="text" ng-model="main.data.Column1" placeholder="Enter Title" />
+            <input type="text" ng-model="main.data.Column1" placeholder="Enter Column1" />
             <input type="text" ng-model="main.data.Column2" placeholder="Enter Description" />
             <button type="submit">Update/Add Row</button>
         </form>
@@ -30,13 +30,28 @@
         </form>
         <div ng-show="main.singleRecord !== null">
             <h2>Result</h2>
-            <span>Id: {{main.singleRecord.TestId}} Title: {{main.singleRecord.Column1}} Description: {{main.singleRecord.Column2}}</span>
+            <span>TestId: {{main.singleRecord.TestId}} Column1: {{main.singleRecord.Column1}} Description: {{main.singleRecord.Column2}}</span>
+        </div>
+        <h1>Select Row by Index</h1>
+        <hr />
+        <form ng-submit="main.getByIndex(main.indexValue, main.indexName)" name="getByKeyForm">
+            <input type="text" ng-model="main.indexValue" placeholder="Index Value to Search For" />
+            <select ng-options="index.Text for index in main.indeceNames" ng-model="main.indexName">
+                <option value="">-- Select Index --</option>
+            </select>
+            <button type="submit">Search Value</button>
+        </form>
+        <div ng-show="main.singleIndexRecord !== null">
+            <h2>Result</h2>
+            <span>
+                TestId: {{main.singleIndexRecord.TestId}} Column1: {{main.singleIndexRecord.Column1}} Description: {{main.singleIndexRecord.Column2}}
+            </span>
         </div>
         <h1>Results</h1>
         <hr />
         <p>Number of Results: {{main.results.length}}</p>
         <div ng-repeat="result in main.results">
-            <span>Id: {{result.TestId}} Title: {{result.Column1}} Description: {{result.Column2}}</span>
+            <span>TestId: {{result.TestId}} Column1: {{result.Column1}} Description: {{result.Column2}}</span>
         </div>
     </div>
     <!-- bower:js -->
