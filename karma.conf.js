@@ -1,3 +1,4 @@
+/*global module */
 // Karma configuration
 // Generated on Thu Jul 30 2015 20:36:27 GMT-0500 (CDT)
 
