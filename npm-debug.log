@@ -1,4 +1,5 @@
 0 info it worked if it ends with ok
+<<<<<<< HEAD
 1 verbose cli [ 'node',
 1 verbose cli   '/usr/local/bin/npm',
 1 verbose cli   'install',
@@ -123,3 +124,72 @@
 57 error errno 3
 58 error stack Error: EACCES, mkdir '/Users/jacobtucker/.npm/grunt-contrib-uglify/0.10.0'
 59 verbose exit [ 3, true ]
+=======
+1 verbose cli [ 'node', '/usr/local/bin/npm', '-g', 'install', 'yuidoc.js' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose cache add [ 'yuidoc.js', null ]
+5 verbose cache add name=undefined spec="yuidoc.js" args=["yuidoc.js",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'yuidoc.js',
+6 verbose parsed url   path: 'yuidoc.js',
+6 verbose parsed url   href: 'yuidoc.js' }
+7 silly lockFile 4982a1fc-yuidoc-js yuidoc.js
+8 verbose lock yuidoc.js /Users/jacobtucker/.npm/4982a1fc-yuidoc-js.lock
+9 silly lockFile 4982a1fc-yuidoc-js yuidoc.js
+10 silly lockFile 4982a1fc-yuidoc-js yuidoc.js
+11 verbose addNamed [ 'yuidoc.js', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 6c575326-yuidoc-js yuidoc.js@
+14 verbose lock yuidoc.js@ /Users/jacobtucker/.npm/6c575326-yuidoc-js.lock
+15 silly addNameRange { name: 'yuidoc.js', range: '*', hasData: false }
+16 verbose request where is /yuidoc.js
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id cabce0d267c8323a
+19 verbose url raw /yuidoc.js
+20 verbose url resolving [ 'https://registry.npmjs.org/', './yuidoc.js' ]
+21 verbose url resolved https://registry.npmjs.org/yuidoc.js
+22 verbose request where is https://registry.npmjs.org/yuidoc.js
+23 info trying registry request attempt 1 at 19:45:21
+24 http GET https://registry.npmjs.org/yuidoc.js
+25 http 404 https://registry.npmjs.org/yuidoc.js
+26 silly registry.get cb [ 404,
+26 silly registry.get   { 'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=0',
+26 silly registry.get     'content-length': '2',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     date: 'Fri, 09 Oct 2015 00:45:06 GMT',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     connection: 'keep-alive',
+26 silly registry.get     'x-served-by': 'cache-ord1732-ORD',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1444351506.279075,VS0,VE39' } ]
+27 silly lockFile 6c575326-yuidoc-js yuidoc.js@
+28 silly lockFile 6c575326-yuidoc-js yuidoc.js@
+29 error 404 Not Found
+29 error 404
+29 error 404 'yuidoc.js' is not in the npm registry.
+29 error 404 You should bug the author to publish it
+29 error 404
+29 error 404 Maybe try 'npm search yuidoc'
+29 error 404
+29 error 404 Note that you can also install from a
+29 error 404 tarball, folder, or http url, or git url.
+30 error System Darwin 15.0.0
+31 error command "node" "/usr/local/bin/npm" "-g" "install" "yuidoc.js"
+32 error cwd /Users/jacobtucker/Toolbox/Workspace/Angular-IndexedDb
+33 error node -v v0.10.35
+34 error npm -v 1.4.28
+35 error code E404
+36 verbose exit [ 1, true ]
+>>>>>>> Delete
