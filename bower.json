@@ -6,7 +6,7 @@
     "tuckerjt07 <tuckerjt07@gmail.com>"
   ],
   "description": "A comprehensive API for interacting with the IndexedDb in browser database through AngularJS factories",
-  "main": "release.js",
+  "main": "src/release/angular-indexed-db.js",
   "keywords": [
     "AngularJS",
     "IndexedDb",

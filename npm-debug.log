@@ -3,12 +3,12 @@
 1 verbose cli   '/usr/local/bin/npm',
 1 verbose cli   'install',
 1 verbose cli   '--save-dev',
-1 verbose cli   'grunt-include-source' ]
+1 verbose cli   'grunt-contrib-uglify' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.35
 4 verbose readDependencies using package.json deps
-5 verbose cache add [ 'grunt-include-source', null ]
-6 verbose cache add name=undefined spec="grunt-include-source" args=["grunt-include-source",null]
+5 verbose cache add [ 'grunt-contrib-uglify', null ]
+6 verbose cache add name=undefined spec="grunt-contrib-uglify" args=["grunt-contrib-uglify",null]
 7 verbose parsed url { protocol: null,
 7 verbose parsed url   slashes: null,
 7 verbose parsed url   auth: null,
@@ -18,103 +18,108 @@
 7 verbose parsed url   hash: null,
 7 verbose parsed url   search: null,
 7 verbose parsed url   query: null,
-7 verbose parsed url   pathname: 'grunt-include-source',
-7 verbose parsed url   path: 'grunt-include-source',
-7 verbose parsed url   href: 'grunt-include-source' }
-8 silly lockFile d7f9b7e1-grunt-include-source grunt-include-source
-9 verbose lock grunt-include-source /Users/jacobtucker/.npm/d7f9b7e1-grunt-include-source.lock
-10 silly lockFile d7f9b7e1-grunt-include-source grunt-include-source
-11 silly lockFile d7f9b7e1-grunt-include-source grunt-include-source
-12 verbose addNamed [ 'grunt-include-source', '' ]
+7 verbose parsed url   pathname: 'grunt-contrib-uglify',
+7 verbose parsed url   path: 'grunt-contrib-uglify',
+7 verbose parsed url   href: 'grunt-contrib-uglify' }
+8 silly lockFile 9dabf0fb-grunt-contrib-uglify grunt-contrib-uglify
+9 verbose lock grunt-contrib-uglify /Users/jacobtucker/.npm/9dabf0fb-grunt-contrib-uglify.lock
+10 silly lockFile 9dabf0fb-grunt-contrib-uglify grunt-contrib-uglify
+11 silly lockFile 9dabf0fb-grunt-contrib-uglify grunt-contrib-uglify
+12 verbose addNamed [ 'grunt-contrib-uglify', '' ]
 13 verbose addNamed [ null, '*' ]
-14 silly lockFile 0a5ba77f-grunt-include-source grunt-include-source@
-15 verbose lock grunt-include-source@ /Users/jacobtucker/.npm/0a5ba77f-grunt-include-source.lock
-16 silly addNameRange { name: 'grunt-include-source', range: '*', hasData: false }
-17 verbose request where is /grunt-include-source
+14 silly lockFile 1f4692e4-grunt-contrib-uglify grunt-contrib-uglify@
+15 verbose lock grunt-contrib-uglify@ /Users/jacobtucker/.npm/1f4692e4-grunt-contrib-uglify.lock
+16 silly addNameRange { name: 'grunt-contrib-uglify', range: '*', hasData: false }
+17 verbose request where is /grunt-contrib-uglify
 18 verbose request registry https://registry.npmjs.org/
-19 verbose request id d84a0682832d34e2
-20 verbose url raw /grunt-include-source
-21 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-include-source' ]
-22 verbose url resolved https://registry.npmjs.org/grunt-include-source
-23 verbose request where is https://registry.npmjs.org/grunt-include-source
-24 info trying registry request attempt 1 at 21:14:14
-25 verbose etag "5LEBB4QXFCN2HP9NI3V7M91O6"
-26 http GET https://registry.npmjs.org/grunt-include-source
-27 http 200 https://registry.npmjs.org/grunt-include-source
+19 verbose request id 9ad5c26145608159
+20 verbose url raw /grunt-contrib-uglify
+21 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-contrib-uglify' ]
+22 verbose url resolved https://registry.npmjs.org/grunt-contrib-uglify
+23 verbose request where is https://registry.npmjs.org/grunt-contrib-uglify
+24 info trying registry request attempt 1 at 09:21:11
+25 verbose etag "E3FZODU21KEHKUBS6N0T6L1C7"
+26 http GET https://registry.npmjs.org/grunt-contrib-uglify
+27 http 200 https://registry.npmjs.org/grunt-contrib-uglify
 28 silly registry.get cb [ 200,
 28 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-28 silly registry.get     etag: '"QCIW704M2BTLTHJB8WMJNZVB"',
+28 silly registry.get     etag: '"BQKG6ACQF6TZWXVEWJD2R1TDW"',
 28 silly registry.get     'content-type': 'application/json',
 28 silly registry.get     'cache-control': 'max-age=60',
-28 silly registry.get     'content-length': '42904',
+28 silly registry.get     'content-length': '70076',
 28 silly registry.get     'accept-ranges': 'bytes',
-28 silly registry.get     date: 'Sat, 03 Oct 2015 02:14:16 GMT',
+28 silly registry.get     date: 'Tue, 10 Nov 2015 15:21:12 GMT',
 28 silly registry.get     via: '1.1 varnish',
-28 silly registry.get     age: '0',
+28 silly registry.get     age: '32',
 28 silly registry.get     connection: 'keep-alive',
-28 silly registry.get     'x-served-by': 'cache-ord1731-ORD',
-28 silly registry.get     'x-cache': 'MISS',
-28 silly registry.get     'x-cache-hits': '0',
-28 silly registry.get     'x-timer': 'S1443838456.047039,VS0,VE314',
+28 silly registry.get     'x-served-by': 'cache-lax1425-LAX',
+28 silly registry.get     'x-cache': 'HIT',
+28 silly registry.get     'x-cache-hits': '1',
+28 silly registry.get     'x-timer': 'S1447168872.169956,VS0,VE0',
 28 silly registry.get     vary: 'Accept' } ]
-29 silly addNameRange number 2 { name: 'grunt-include-source', range: '*', hasData: true }
-30 silly addNameRange versions [ 'grunt-include-source',
+29 silly addNameRange number 2 { name: 'grunt-contrib-uglify', range: '*', hasData: true }
+30 silly addNameRange versions [ 'grunt-contrib-uglify',
 30 silly addNameRange   [ '0.1.0',
+30 silly addNameRange     '0.1.1',
+30 silly addNameRange     '0.1.2',
 30 silly addNameRange     '0.2.0',
 30 silly addNameRange     '0.2.1',
 30 silly addNameRange     '0.2.2',
+30 silly addNameRange     '0.2.3',
+30 silly addNameRange     '0.2.4',
+30 silly addNameRange     '0.2.5',
+30 silly addNameRange     '0.2.6',
+30 silly addNameRange     '0.2.7',
 30 silly addNameRange     '0.3.0',
 30 silly addNameRange     '0.3.1',
+30 silly addNameRange     '0.1.1-rc5',
+30 silly addNameRange     '0.1.1-rc6',
 30 silly addNameRange     '0.3.2',
 30 silly addNameRange     '0.3.3',
-30 silly addNameRange     '0.3.4',
-30 silly addNameRange     '0.3.5',
-30 silly addNameRange     '0.3.7',
-30 silly addNameRange     '0.3.8',
-30 silly addNameRange     '0.3.9',
 30 silly addNameRange     '0.4.0',
-30 silly addNameRange     '0.4.1',
-30 silly addNameRange     '0.4.2',
-30 silly addNameRange     '0.4.3',
-30 silly addNameRange     '0.4.4',
-30 silly addNameRange     '0.4.5',
 30 silly addNameRange     '0.5.0',
+30 silly addNameRange     '0.4.1',
 30 silly addNameRange     '0.5.1',
 30 silly addNameRange     '0.6.0',
-30 silly addNameRange     '0.6.1',
-30 silly addNameRange     '0.7.0' ] ]
-31 verbose addNamed [ 'grunt-include-source', '0.7.0' ]
-32 verbose addNamed [ '0.7.0', '0.7.0' ]
-33 silly lockFile f2b1de51-grunt-include-source-0-7-0 grunt-include-source@0.7.0
-34 verbose lock grunt-include-source@0.7.0 /Users/jacobtucker/.npm/f2b1de51-grunt-include-source-0-7-0.lock
-35 silly lockFile b4dc3e5c-e-grunt-include-source-0-7-0-tgz https://registry.npmjs.org/grunt-include-source/-/grunt-include-source-0.7.0.tgz
-36 verbose lock https://registry.npmjs.org/grunt-include-source/-/grunt-include-source-0.7.0.tgz /Users/jacobtucker/.npm/b4dc3e5c-e-grunt-include-source-0-7-0-tgz.lock
-37 verbose addRemoteTarball [ 'https://registry.npmjs.org/grunt-include-source/-/grunt-include-source-0.7.0.tgz',
-37 verbose addRemoteTarball   '468d800bfcb6cae6f90fea0f8086072571c7c120' ]
-38 info retry fetch attempt 1 at 21:14:15
-39 verbose fetch to= /var/folders/ky/kd0qdlsd4gsgcgm7xzjyd3n80000gn/T/npm-6784-y7wE1NUS/registry.npmjs.org/grunt-include-source/-/grunt-include-source-0.7.0.tgz
-40 http GET https://registry.npmjs.org/grunt-include-source/-/grunt-include-source-0.7.0.tgz
-41 http 200 https://registry.npmjs.org/grunt-include-source/-/grunt-include-source-0.7.0.tgz
-42 silly lockFile b4dc3e5c-e-grunt-include-source-0-7-0-tgz https://registry.npmjs.org/grunt-include-source/-/grunt-include-source-0.7.0.tgz
-43 silly lockFile b4dc3e5c-e-grunt-include-source-0-7-0-tgz https://registry.npmjs.org/grunt-include-source/-/grunt-include-source-0.7.0.tgz
-44 silly lockFile f2b1de51-grunt-include-source-0-7-0 grunt-include-source@0.7.0
-45 silly lockFile f2b1de51-grunt-include-source-0-7-0 grunt-include-source@0.7.0
-46 silly lockFile 0a5ba77f-grunt-include-source grunt-include-source@
-47 silly lockFile 0a5ba77f-grunt-include-source grunt-include-source@
-48 error Error: EACCES, mkdir '/Users/jacobtucker/.npm/grunt-include-source/0.7.0'
-48 error  { [Error: EACCES, mkdir '/Users/jacobtucker/.npm/grunt-include-source/0.7.0']
+30 silly addNameRange     '0.7.0',
+30 silly addNameRange     '0.8.0',
+30 silly addNameRange     '0.8.1',
+30 silly addNameRange     '0.9.0',
+30 silly addNameRange     '0.9.1',
+30 silly addNameRange     '0.9.2',
+30 silly addNameRange     '0.10.0' ] ]
+31 verbose addNamed [ 'grunt-contrib-uglify', '0.10.0' ]
+32 verbose addNamed [ '0.10.0', '0.10.0' ]
+33 silly lockFile b2631ea6-grunt-contrib-uglify-0-10-0 grunt-contrib-uglify@0.10.0
+34 verbose lock grunt-contrib-uglify@0.10.0 /Users/jacobtucker/.npm/b2631ea6-grunt-contrib-uglify-0-10-0.lock
+35 silly lockFile 280a499a--grunt-contrib-uglify-0-10-0-tgz https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.10.0.tgz
+36 verbose lock https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.10.0.tgz /Users/jacobtucker/.npm/280a499a--grunt-contrib-uglify-0-10-0-tgz.lock
+37 verbose addRemoteTarball [ 'https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.10.0.tgz',
+37 verbose addRemoteTarball   'f0f2159b6f916bf5e93d4d28f785db9b7887c5e5' ]
+38 info retry fetch attempt 1 at 09:21:12
+39 verbose fetch to= /var/folders/ky/kd0qdlsd4gsgcgm7xzjyd3n80000gn/T/npm-9603-B5CkqGKZ/registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.10.0.tgz
+40 http GET https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.10.0.tgz
+41 http 200 https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.10.0.tgz
+42 silly lockFile 280a499a--grunt-contrib-uglify-0-10-0-tgz https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.10.0.tgz
+43 silly lockFile 280a499a--grunt-contrib-uglify-0-10-0-tgz https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.10.0.tgz
+44 silly lockFile b2631ea6-grunt-contrib-uglify-0-10-0 grunt-contrib-uglify@0.10.0
+45 silly lockFile b2631ea6-grunt-contrib-uglify-0-10-0 grunt-contrib-uglify@0.10.0
+46 silly lockFile 1f4692e4-grunt-contrib-uglify grunt-contrib-uglify@
+47 silly lockFile 1f4692e4-grunt-contrib-uglify grunt-contrib-uglify@
+48 error Error: EACCES, mkdir '/Users/jacobtucker/.npm/grunt-contrib-uglify/0.10.0'
+48 error  { [Error: EACCES, mkdir '/Users/jacobtucker/.npm/grunt-contrib-uglify/0.10.0']
 48 error   errno: 3,
 48 error   code: 'EACCES',
-48 error   path: '/Users/jacobtucker/.npm/grunt-include-source/0.7.0',
+48 error   path: '/Users/jacobtucker/.npm/grunt-contrib-uglify/0.10.0',
 48 error   parent: 'angular-indexed-db' }
 49 error Please try running this command again as root/Administrator.
 50 error System Darwin 15.0.0
-51 error command "node" "/usr/local/bin/npm" "install" "--save-dev" "grunt-include-source"
+51 error command "node" "/usr/local/bin/npm" "install" "--save-dev" "grunt-contrib-uglify"
 52 error cwd /Users/jacobtucker/Toolbox/Workspace/Angular-IndexedDb
 53 error node -v v0.10.35
 54 error npm -v 1.4.28
-55 error path /Users/jacobtucker/.npm/grunt-include-source/0.7.0
+55 error path /Users/jacobtucker/.npm/grunt-contrib-uglify/0.10.0
 56 error code EACCES
 57 error errno 3
-58 error stack Error: EACCES, mkdir '/Users/jacobtucker/.npm/grunt-include-source/0.7.0'
+58 error stack Error: EACCES, mkdir '/Users/jacobtucker/.npm/grunt-contrib-uglify/0.10.0'
 59 verbose exit [ 3, true ]
