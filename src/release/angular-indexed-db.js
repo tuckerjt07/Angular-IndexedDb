@@ -338,8 +338,8 @@
                             if (itemsToAdd.hasOwnProperty(item)) {
                                 transaction = data.transaction([objectStoreObject.name], 'readwrite');
                                 if (itemsToAdd.hasOwnProperty(item)) {
-                                    if (objectStoreObject.createdObjectStore !== null) {
-                                        transaction.add(itemsToAdd[item]);
+                                    if (objectStoreObject.createdObjectStore !== null && objectStoreObject.createdObjectStore !== undefined) {
+                                        objectStoreObject.createdObjectStore.add(itemsToAdd[item]);
                                     } else {
                                         store = transaction.objectStore(objectStoreObject.name);
                                         store.add(itemsToAdd[item]);
