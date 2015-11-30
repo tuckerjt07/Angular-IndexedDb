@@ -340,10 +340,9 @@
                                 if (itemsToAdd.hasOwnProperty(item)) {
                                     if (objectStoreObject.createdObjectStore !== null && objectStoreObject.createdObjectStore !== undefined) {
                                         objectStoreObject.createdObjectStore.add(itemsToAdd[item]);
-                                    } else {
-                                        store = transaction.objectStore(objectStoreObject.name);
-                                        store.add(itemsToAdd[item]);
                                     }
+                                    store = transaction.objectStore(objectStoreObject.name);
+                                    store.add(itemsToAdd[item]);
                                 }
                             }
                             deferred.resolve(true);
