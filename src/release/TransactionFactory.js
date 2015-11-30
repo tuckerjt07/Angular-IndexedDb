@@ -75,11 +75,10 @@
                                 transaction = data.transaction([objectStoreObject.name], 'readwrite');
                                 if (itemsToAdd.hasOwnProperty(item)) {
                                     if (objectStoreObject.createdObjectStore !== null && objectStoreObject.createdObjectStore !== null) {
-                                        objectStoreObject.createdObjectStore.add(itemsToAdd[item]);
-                                    } else {
-                                        store = transaction.objectStore(objectStoreObject.name);
-                                        store.add(itemsToAdd[item]);
+                                        transaction = data.transaction([objectStoreObject.name], 'readwrite');
                                     }
+                                    store = transaction.objectStore(objectStoreObject.name);
+                                    store.add(itemsToAdd[item]);
                                 }
                             }
                             deferred.resolve(true);
