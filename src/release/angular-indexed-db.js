@@ -306,11 +306,10 @@
                                 transaction = databaseObject.Db.transaction([objectStore.name], 'readwrite');
                                 if (itemsToAdd.hasOwnProperty(item)) {
                                     if (objectStore.createdObjectStore !== null) {
-                                        transaction.add(itemsToAdd[item]);
-                                    } else {
-                                        store = transaction.objectStore(objectStore.name);
-                                        store.add(itemsToAdd[item]);
+                                        transaction = databaseObject.Db.transaction([objectStore.name], 'readwrite');
                                     }
+                                    store = transaction.objectStore(objectStore.name);
+                                    store.add(itemsToAdd[item]);
                                 }
                             }
                         }
@@ -339,7 +338,7 @@
                                 transaction = data.transaction([objectStoreObject.name], 'readwrite');
                                 if (itemsToAdd.hasOwnProperty(item)) {
                                     if (objectStoreObject.createdObjectStore !== null && objectStoreObject.createdObjectStore !== undefined) {
-                                        objectStoreObject.createdObjectStore.add(itemsToAdd[item]);
+                                        transaction = databaseObject.Db.transaction([objectStore.name], 'readwrite');
                                     }
                                     store = transaction.objectStore(objectStoreObject.name);
                                     store.add(itemsToAdd[item]);
