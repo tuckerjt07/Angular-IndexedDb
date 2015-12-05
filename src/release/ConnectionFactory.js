@@ -125,6 +125,13 @@
                     };
                     openConnectionWithPromise(databaseObject, objectStore, indeces);
                     return deferred.promise;
+                },
+                getDatabaseVersion: function (databaseObject) {
+                    var deferred, request;
+                    deferred = $q.defer();
+                    request = $window.indexedDB.open(databaseObject.DbName, databaseObject.DbVersion);
+                    deferred.resolve(request.result.version);
+                    return deferred.promise;
                 }
             };
         }]);

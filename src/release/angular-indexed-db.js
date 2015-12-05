@@ -125,6 +125,11 @@
                     };
                     openConnectionWithPromise(databaseObject, objectStore, indeces);
                     return deferred.promise;
+                },
+                getDatabaseVersion: function (databaseObject) {
+                    var request;
+                    request = $window.indexedDB.open(databaseObject.DbName, databaseObject.DbVersion);
+                    console.log(request);
                 }
             };
         }]);
@@ -306,10 +311,11 @@
                                 transaction = databaseObject.Db.transaction([objectStore.name], 'readwrite');
                                 if (itemsToAdd.hasOwnProperty(item)) {
                                     if (objectStore.createdObjectStore !== null) {
-                                        transaction = databaseObject.Db.transaction([objectStore.name], 'readwrite');
+                                        transaction.add(itemsToAdd[item]);
+                                    } else {
+                                        store = transaction.objectStore(objectStore.name);
+                                        store.add(itemsToAdd[item]);
                                     }
-                                    store = transaction.objectStore(objectStore.name);
-                                    store.add(itemsToAdd[item]);
                                 }
                             }
                         }
@@ -330,6 +336,7 @@
                 insertWithPromise: function (databaseObject, objectStoreObject, indecesObject, itemsToAdd) {
                     var deferred, store;
                     deferred = $q.defer();
+                    ConnectionManager.getDatabaseVersion(databaseObject);
                     ConnectionManager.openConnectionWithPromise(databaseObject, objectStoreObject, indecesObject)
                         .then(function (data) {
                         var item, transaction;
@@ -337,8 +344,8 @@
                             if (itemsToAdd.hasOwnProperty(item)) {
                                 transaction = data.transaction([objectStoreObject.name], 'readwrite');
                                 if (itemsToAdd.hasOwnProperty(item)) {
-                                    if (objectStoreObject.createdObjectStore !== null && objectStoreObject.createdObjectStore !== undefined) {
-                                        transaction = databaseObject.Db.transaction([objectStore.name], 'readwrite');
+                                    if (objectStoreObject.createdObjectStore !== null && objectStoreObject.createdObjectStore !== null) {
+                                        transaction = data.transaction([objectStoreObject.name], 'readwrite');
                                     }
                                     store = transaction.objectStore(objectStoreObject.name);
                                     store.add(itemsToAdd[item]);

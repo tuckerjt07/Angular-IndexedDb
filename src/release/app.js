@@ -14,5 +14,5 @@
      * @param Helper.factory The Helper.factory module
      */
     angular.module('IndexedDb.Utils', ['ConnectionFactory.factory', 'DatabaseObject.value', 'ObjectStore.value', 'IndecesObject.value',
-                                       'TransactionFactory.factory', 'Helper.factory']);
+                                       'TransactionFactory.factory', 'Helper.factory', 'TestController.Controller']);
 }());

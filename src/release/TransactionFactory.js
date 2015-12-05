@@ -18,10 +18,22 @@
      */
     .factory('TransactionFactory', ['$q', 'ConnectionManager',
             function ($q, ConnectionManager) {
-            var clearDataFromObjectStore;
+                var clearDataFromObjectStore, checkIfObjectStoreExists;
             clearDataFromObjectStore = function (databaseObject, objectStoreName) {
                 databaseObject.Db.transaction([objectStoreName])
                     .objectStore(objectStoreName).clear();
+            };
+            checkIfObjectStoreExists = function (objectStoreName) {
+                var objectStoreNames, i, objectStoreFound;
+                objectStoreFound = false;
+                objectStoreNames = ConnectionManager.getObjectStoreNames();
+                for (i = 0; i < objectStoreNames; i++) {
+                    if (objectStoreName === objectStoreNames[1]) {
+                        objectStoreFound = true;
+                        break;
+                    }
+                }
+                return objectStoreFound;
             };
             return {
                 /**
@@ -67,22 +79,29 @@
                 insertWithPromise: function (databaseObject, objectStoreObject, indecesObject, itemsToAdd) {
                     var deferred, store;
                     deferred = $q.defer();
-                    ConnectionManager.openConnectionWithPromise(databaseObject, objectStoreObject, indecesObject)
-                        .then(function (data) {
-                        var item, transaction;
-                        for (item in itemsToAdd) {
-                            if (itemsToAdd.hasOwnProperty(item)) {
-                                transaction = data.transaction([objectStoreObject.name], 'readwrite');
-                                if (itemsToAdd.hasOwnProperty(item)) {
-                                    if (objectStoreObject.createdObjectStore !== null && objectStoreObject.createdObjectStore !== null) {
-                                        transaction = data.transaction([objectStoreObject.name], 'readwrite');
-                                    }
-                                    store = transaction.objectStore(objectStoreObject.name);
-                                    store.add(itemsToAdd[item]);
-                                }
-                            }
-                            deferred.resolve(true);
+                    ConnectionManager.getDatabaseVersion(databaseObject).then(function (versionNumber) {
+                        if (!checkIfObjectStoreExists(objectStoreObject.name)) {
+                            databaseObject.version = versionNumber + 1;
+                        } else {
+                            databaseObject.version = versionNumber;
                         }
+                        ConnectionManager.openConnectionWithPromise(databaseObject, objectStoreObject, indecesObject)
+                            .then(function (data) {
+                            var item, transaction;
+                            for (item in itemsToAdd) {
+                                if (itemsToAdd.hasOwnProperty(item)) {
+                                    transaction = data.transaction([objectStoreObject.name], 'readwrite');
+                                    if (itemsToAdd.hasOwnProperty(item)) {
+                                        if (objectStoreObject.createdObjectStore !== null && objectStoreObject.createdObjectStore !== null) {
+                                            transaction = data.transaction([objectStoreObject.name], 'readwrite');
+                                        }
+                                        store = transaction.objectStore(objectStoreObject.name);
+                                        store.add(itemsToAdd[item]);
+                                    }
+                                }
+                                deferred.resolve(true);
+                            }
+                        });
                     });
                     return deferred.promise;
                 },
