@@ -13,6 +13,9 @@
      * @param TestController.Controller The TestController.Controller module
      * @param Helper.factory The Helper.factory module
      */
+    //USE THIS FOR TESTING ONLY
+    /*angular.module('IndexedDb.Utils', ['ConnectionFactory.factory', 'DatabaseObject.value', 'ObjectStore.value', 'IndecesObject.value',
+                                       'TransactionFactory.factory', 'Helper.factory', 'TestController.Controller']);*/
     angular.module('IndexedDb.Utils', ['ConnectionFactory.factory', 'DatabaseObject.value', 'ObjectStore.value', 'IndecesObject.value',
-                                       'TransactionFactory.factory', 'Helper.factory', 'TestController.Controller']);
+                                       'TransactionFactory.factory', 'Helper.factory']);
 }());
