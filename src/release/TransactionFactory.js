@@ -341,7 +341,7 @@
                     updateDataByKeyWithPromise: function (databaseObject, objectStoreObject, indecesObject, updatedObject) {
                         var deferred;
                         deferred = $q.defer();
-                        ConnectionManager.openConnection(databaseObject, objectStoreObject, indecesObject).then(function (data) {
+                        ConnectionManager.openConnectionWithPromise(databaseObject, objectStoreObject, indecesObject).then(function (data) {
                             data.transaction([objectStoreObject.name], 'readwrite')
                                 .objectStore(objectStoreObject.name)
                                 .put(updatedObject);
