@@ -176,7 +176,11 @@
          * @type {Object}
          * @default {}
          */
-        Db: {}
+        Db: {},
+        CreateObject: function (dbName, dbVersion) {
+            this.DbName = dbName;
+            this.DbVersion = dbVersion;
+        }
     });
 }());
 /*global angular */
@@ -1133,7 +1137,11 @@
          * @type {Object}
          * @default {}
          */
-        Db: {}
+        Db: {},
+        CreateObject: function (dbName, dbVersion) {
+            this.DbName = dbName;
+            this.DbVersion = dbVersion;
+        }
     });
 }());
 /*global angular */
