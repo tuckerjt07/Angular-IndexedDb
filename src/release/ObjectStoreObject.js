@@ -46,6 +46,11 @@
          * @type {Object}
          * @default null
          */
-        createdObjectStore: null
+        createdObjectStore: null,
+        CreateObject: function (name, keyPath, autoIncrement) {
+            this.name = name;
+            this.keyPath = keyPath;
+            this.autoIncrement = autoIncrement;
+        }
     });
 }());
