@@ -1,7 +1,7 @@
 # Angular-IndexedDb
 This project is a collection of Angular factories dedicated to interacting with the built in IndexedDb browser database.
 
-This project is still in its infancy stage and as such will be violatile as it undergoes further maturity, development, and code coverage.
+This project is close to being production ready pending test case creation.
 
 The goal of this project is to be a comprehensive API for the browser based IndexedDb Database that can be injected into Angular.
 
